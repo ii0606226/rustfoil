@@ -4,10 +4,10 @@ use serde::{Deserialize, Serialize};
 use serde_with::skip_serializing_none;
 
 const NON_ALPHANUMERIC_LIKE_PYTHON: &AsciiSet = &NON_ALPHANUMERIC
-	.remove(b'_')
-	.remove(b'.')
-	.remove(b'-')
-	.remove(b'~');
+    .remove(b'_')
+    .remove(b'.')
+    .remove(b'-')
+    .remove(b'~');
 
 
 #[skip_serializing_none]
