@@ -1,9 +1,8 @@
 use crate::result::Result;
-use core::fmt;
 use flate2::write::ZlibEncoder;
 use flate2::Compression;
 use std::io::Write;
-use std::str::FromStr;
+use structopt::clap::arg_enum;
 use structopt::StructOpt;
 use structopt::clap::arg_enum;
 
