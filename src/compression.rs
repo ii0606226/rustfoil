@@ -8,12 +8,12 @@ use structopt::StructOpt;
 use structopt::clap::arg_enum;
 
 arg_enum! {
-	#[derive(StructOpt, Debug, Clone, Copy)]
-	pub enum CompressionFlag {
-    	Off = 0x00,
-    	ZSTD = 0x0D,
-    	Zlib = 0x0E,
-	}
+    #[derive(StructOpt, Debug, Clone, Copy)]
+    pub enum CompressionFlag {
+        Off = 0x00,
+        ZSTD = 0x0D,
+        Zlib = 0x0E,
+    }
 }
 
 impl CompressionFlag {
