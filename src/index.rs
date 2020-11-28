@@ -1,7 +1,14 @@
 use crate::gdrive::FileInfo;
-use percent_encoding::{utf8_percent_encode, NON_ALPHANUMERIC};
+use percent_encoding::{utf8_percent_encode, NON_ALPHANUMERIC, AsciiSet};
 use serde::{Deserialize, Serialize};
 use serde_with::skip_serializing_none;
+
+const NON_ALPHANUMERIC_LIKE_PYTHON: &AsciiSet = &NON_ALPHANUMERIC
+	.remove(b'_')
+	.remove(b'.')
+	.remove(b'-')
+	.remove(b'~');
+
 
 #[skip_serializing_none]
 #[derive(Serialize, Deserialize)]
@@ -66,7 +73,7 @@ pub struct ParsedFileInfo {
 impl ParsedFileInfo {
     pub fn new(info: FileInfo) -> ParsedFileInfo {
         ParsedFileInfo {
-            name_encoded: utf8_percent_encode(info.name.as_str(), NON_ALPHANUMERIC).to_string(),
+            name_encoded: utf8_percent_encode(info.name.as_str(), NON_ALPHANUMERIC_LIKE_PYTHON).to_string(),
             id: info.id,
             size: info.size,
             name: info.name,
